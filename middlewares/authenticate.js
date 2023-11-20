@@ -4,6 +4,12 @@ var jwt = require('jwt-simple');
 var moment = require('moment');
 var secret = 'pragol2021Monithor';
 
+const express = require('express');
+const cors = require('cors');
+const app = express();
+
+app.use(cors({ origin: 'https://administrador-88894.web.app' }));
+
 exports.auth = function(req,res,next){
 
     if(!req.headers.authorization){
