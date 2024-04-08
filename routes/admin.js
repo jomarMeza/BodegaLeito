@@ -6,7 +6,16 @@ var AdminController = require('../controllers/AdminController');
 var api = express.Router();
 var auth = require('../middlewares/authenticate');
 var multiparty = require('connect-multiparty');
-var path = multiparty({uploadDir: './uploads/productos'});
+var cloudinary = require('cloudinary').v2;
+var path = multiparty();
+
+// Configurar Cloudinary
+cloudinary.config({
+    cloud_name: 'dqoilngpl',
+    api_key: '861613354783826',
+    api_secret: 'izidl-PdrrDvqIy0eIFv4OHrs68'
+});
+
 
 api.post('/login_admin',AdminController.login_admin);
 api.get('/listar_etiquetas_admin',auth.auth,AdminController.listar_etiquetas_admin);
